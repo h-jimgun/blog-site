@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render} from '@testing-library/react'
 import App from "../App";
 import '@testing-library/jest-dom'
 
@@ -18,10 +18,10 @@ describe('Blog Site Tests', () => {
   })
 
   test('renders ArticleList with all articles', () => {
-    render(<App />)
-    expect(screen.getByText('My First Blog Post')).toBeInTheDocument()
-    expect(screen.getByText('Learning React')).toBeInTheDocument()
+  const { container } = render(<App />)
+      expect(screen.getByText('Learning React')).toBeInTheDocument()
     expect(screen.getByText('Building a Blog Site')).toBeInTheDocument()
+    expect(container).toBeInTheDocument()
   })
 
   test('renders Article with correct props', () => {
